@@ -1,25 +1,35 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import './commonstyles/commonstyles.css';
 
 const Header = () =>
 {
     return(
-        <div className="">
-            <Link to = "/">
+        <div className="header-tab">
+            <Link to = "/" className = "header-items">
                 Home
             </Link>
-            <Link to = "/bloggers">
+            <Link to = "/bloggers" className = "header-items">
                 Bloggers
             </Link>
-            <Link to = "/contact">
+            <Link className = "header-items" to = "/contact">
                 Contact
             </Link>
+            <div className = "header-buttons">
             <Link to = "/login">
+            <Button>
                 Log In
+            </Button>
             </Link>
+            </div>
+            <div className = "header-buttons">
             <Link to = "/sign-up">
+            <Button className = "header-items">
                 Sign Up
+            </Button>
             </Link>
+            </div>
         </div>
     );
 }
