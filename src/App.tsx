@@ -7,6 +7,7 @@ import Bloggers from './common/Bloggers';
 import Contact from './common/Contact';
 import Login from './common/Login';
 import Register from './common/Register';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return(
