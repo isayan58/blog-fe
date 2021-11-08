@@ -7,6 +7,7 @@ import Bloggers from './common/Bloggers';
 import Contact from './common/Contact';
 import Login from './common/Login';
 import Register from './common/Register';
+import Blogs from './authorBlogs/Blogs';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route element={<Contact/>} path="/contact"/>
       <Route element={<Login/>} path="/login"/>
       <Route element={<Register/>} path="/sign-up"/>
+      <Route element={<Blogs/>} path="/blogs/:blogger_id"/>
       </Routes>
     </div>
   </>);

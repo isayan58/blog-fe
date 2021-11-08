@@ -28,3 +28,36 @@
     justify-items: center;
     /* float: right;  Buttons should be on the right */
 }
+
+.bloggers-list
+{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding: 3%;
+}
+
+.blogger-cards{
+    padding: 5px;
+    height: 40%;
+    width: 20%;
+}
+
+.blogger-card{
+    padding: 5px;
+    height: 1000px;
+}
+
+.blogger-card:hover{
+    padding: 5px;
+    height: 1100px;
+}
+
+.blogger-card > img{
+    height: 30%;
+}
+
+.blogger-title{
+    font-family: monospace;
+    padding: 2px;
+}
