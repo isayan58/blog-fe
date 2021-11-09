@@ -32,7 +32,7 @@ const Blogs = () =>
             <div><img src ={data.header_image}/></div>
             <div>{data.title}</div>
             <div>{data.tags.map((tags) => (
-                <div>{tags}</div>
+                <div>{tags} ; </div>
             ))}</div>
             </div>
         ))}
