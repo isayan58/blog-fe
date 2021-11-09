@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import React, { useEffect, useState } from "react";
 interface Blogs
 {
@@ -14,6 +14,7 @@ const Blogs = () =>
 {
     const [blogs, setBlogs] = useState<Blogs[]>([]);
     const { blogger_id } = useParams();
+    const navigate = useNavigate();
     
     const getBlogs =()=>{
         const fetchblogs = async () =>
@@ -22,11 +23,20 @@ const Blogs = () =>
             const responseData = await apiResponse.json();
             setBlogs(responseData);
         }
-        fetchblogs();
+        fetchblogs(); //Redux store can be implemented for showing author name
     }
     useEffect(getBlogs,[]);
     return(
-        <div>Blogs by ID: {blogger_id}</div>
+        <div>{blogs.map((data) => (
+            <div onClick = {()=> navigate(`/blogs/${data.blogger_id}/${data.title}`)}>
+            <div><img src ={data.header_image}/></div>
+            <div>{data.title}</div>
+            <div>{data.tags.map((tags) => (
+                <div>{tags}</div>
+            ))}</div>
+            </div>
+        ))}
+        </div>
     );
 }
 export default Blogs;
