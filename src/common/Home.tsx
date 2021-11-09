@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import React, { useEffect, useState } from "react";
+import './commonstyles/commonstyles.css';
 interface Blogs
 {
     _id: string,
@@ -23,19 +24,22 @@ const Home = () =>{
     }
     useEffect(getBlogs, []);
     return(
-        <div>
+        <div className="home-blogs">
             {
                 blogs.map((data)=>
                 (
-                    <div onClick={()=>navigate(`/blogs/${data.blogger_id}/${data.title}`)}>
-                    <div><img src={data.header_image}/></div>
-                    <div>{data.title}</div>
-                    <div>{data.tags.map((tags)=>
+                    <div className="blogs-card" onClick={()=>navigate(`/blogs/${data.blogger_id}/${data.title}`)}>
+                    <div className="image-container"><img src={data.header_image}
+                    className="home-blog-image"/></div>
+                    <div className="blog-details-container">
+                        <div>{data.title}</div>
+                    <div className="tags">{data.tags.map((tags)=>
                     (
                         <div>{tags} ; </div>
                     ))
-                }</div>
+                    }</div>
                     </div>
+                </div>
                 ))
             }
         </div>

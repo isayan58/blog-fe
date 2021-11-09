@@ -9,8 +9,8 @@
 .header-items
 {
     padding: 1%;
-    background-color: #1E1E1E;
-    color:lemonchiffon;
+    background-color: #373806;
+    color:rgb(147, 241, 229);
     font-style: italic;
     font-family:monospace;
     font-size: 20px;
@@ -60,4 +60,40 @@
 .blogger-title{
     font-family: monospace;
     padding: 2px;
+}
+
+.home-blogs
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 2%;
+}
+
+.tags{
+    display: flex;
+    flex-direction: row;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 15px;
+    font-weight: 100;
+}
+.blogs-card
+{
+    display: flex;
+    padding: 2%;
+    background-color: hsl(180, 78%, 96%);
+    box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.4);
+}
+
+.home-blog-image
+{
+    height: 180px;
+}
+
+.blog-details-container
+{
+    padding:2%;
+    font-size: 30px;
+    font-family: cursive;
+    font-weight: 700;
 }
