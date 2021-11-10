@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router";
 import React, { useEffect, useState } from "react";
 import './commonstyles/commonstyles.css';
+import Pagination from '@material-ui/lab/Pagination';
+
 interface Blogs
 {
     _id: string,
@@ -25,7 +27,8 @@ const Home = () =>{
     useEffect(getBlogs, []);
     return(
         <div className="home-blogs">
-            {
+                <Pagination count={5} />
+                {
                 blogs.map((data)=>
                 (
                     <div className="blogs-card" onClick={()=>navigate(`/blogs/${data.blogger_id}/${data.title}`)}>
