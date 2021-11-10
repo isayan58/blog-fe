@@ -6,13 +6,31 @@ const BlogWrite =() =>
 {
     const [author, setAuthor] = useState(4);
     const [blogtitle, setBlogTitle] = useState("");
+    const [image, setImage] = useState("");
     const [blogcontent, setBlogContent] = useState("");
     const [tag, setTag]=useState("");
-    const [tags, setTags]=useState([""]);
+    const [tags, setTags]=useState(["Blogs"]);
 
-    const handleClick =() => {
-        console.log(tags);
-    }
+    const handleClick = async() => {
+        try{
+            const apiResponse = await fetch("http://localhost:8000/postBlog",
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  blogger_id: author,
+                  title: blogtitle,
+                  header_image: image,
+                  content: blogcontent,
+                  tags: tags,
+                  date_posted: Date.now()
+                }),
+            })
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
 
     return(
         <div>
@@ -30,6 +48,19 @@ const BlogWrite =() =>
         {
          <div className="error">{}</div>
         }
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Header image address</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter header image address"
+          onClick={(e) => {
+            setImage(e.currentTarget.value);
+          }}
+        />
+        {
+         <div className="error">{}</div>
+        }
+      </Form.Group>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control
