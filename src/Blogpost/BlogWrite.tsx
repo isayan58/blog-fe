@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import Card from "react-bootstrap/esm/Card";
 
@@ -10,6 +10,7 @@ const BlogWrite =() =>
     const [blogcontent, setBlogContent] = useState("");
     const [tag, setTag]=useState("");
     const [tags, setTags]=useState(["Blogs"]);
+    const blogContentEl = useRef(null);
 
     const handleClick = async() => {
         try{
@@ -65,6 +66,7 @@ const BlogWrite =() =>
       <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control
           as="textarea"
+          ref = {blogContentEl}
           rows={15}
           placeholder="Enter Blog Content here"
           onChange={(e) =>
