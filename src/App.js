@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useMemo, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './common/Header';
 import './App.css';
@@ -10,12 +10,16 @@ import Register from './common/Register';
 import Blogs from './authorBlogs/Blogs';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import BlogContent from './authorBlogs/BlogContent';
-import BlogWrite from '../src/Blogpost/BlogWrite';
+import BlogWrite from './Blogpost/BlogWrite';
+import { BlogContext } from './BlogContext';
 
 function App() {
+  const [ theme, setTheme ] = useState("#777777");
+  // const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme]);
   return(
   <>
-    <div>
+    <div style={{ background: theme }}>
+      <BlogContext.Provider value= {{ theme, setTheme }}>
       <Header/>
       <Routes>
       <Route element={<Home/>} path="/"/>
@@ -27,6 +31,7 @@ function App() {
       <Route element={<BlogContent/>} path="/blogs/:blogger_id/:title"/>
       <Route element={<BlogWrite/>} path="/write-a-blog" />
       </Routes>
+      </BlogContext.Provider>
     </div>
   </>);
 }

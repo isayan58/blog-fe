@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { BlogContext } from "../BlogContext";
 import './commonstyles/commonstyles.css';
 
 const Header = () =>
 {
+    const { theme, setTheme } = useContext(BlogContext);
+    const changetoDarkTheme =() =>
+    {
+        setTheme("#888888");
+    }
+    const changetoLightTheme =() =>
+    {
+        setTheme("#FFFFFF");
+    }
     return(
         <div className="header-tab">
             <Link to = "/" className = "header-items">
@@ -32,6 +42,8 @@ const Header = () =>
                 Sign Up
             </Button>
             </Link>
+            <Button onClick={changetoDarkTheme}>Dark Theme</Button>
+            <Button onClick={changetoLightTheme}>Light Theme</Button>
             </div>
         </div>
     );
