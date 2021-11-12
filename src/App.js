@@ -14,12 +14,13 @@ import BlogWrite from './Blogpost/BlogWrite';
 import { BlogContext } from './BlogContext';
 
 function App() {
-  const [ theme, setTheme ] = useState("#777777");
+  const [ theme, setTheme ] = useState("#000000");
+  const [ font, setFont ] = useState("#FFFFFF");
   // const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme]);
   return(
   <>
-    <div style={{ background: theme }}>
-      <BlogContext.Provider value= {{ theme, setTheme }}>
+    <div style={{ background: theme, color: font }}>
+      <BlogContext.Provider value= {{ theme, setTheme, font, setFont }}>
       <Header/>
       <Routes>
       <Route element={<Home/>} path="/"/>

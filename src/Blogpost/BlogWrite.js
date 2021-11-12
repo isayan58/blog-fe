@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import Card from "react-bootstrap/esm/Card";
 import { useNavigate } from "react-router";
+import './Blogpost.css';
 
 const BlogWrite =() =>
 {
@@ -37,7 +38,7 @@ const BlogWrite =() =>
     };
 
     return(
-        <div>
+        <div className="blogpost">
             <Card className="container">
       <Card.Title>Write your blog here</Card.Title>
       <Form.Group className="mb-3" controlId="formBasicEmail">

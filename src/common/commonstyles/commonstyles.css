@@ -39,8 +39,8 @@
 
 .blogger-cards{
     padding: 5px;
-    height: 40%;
-    width: 35%;
+    height: 38%;
+    width: 30%;
 }
 
 .blogger-card{
@@ -54,7 +54,7 @@
 }
 
 .blogger-card > img{
-    height: 30%;
+    height: 28%;
 }
 
 .blogger{
@@ -72,6 +72,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     padding: 2%;
+    color:black;
 }
 
 .tags{

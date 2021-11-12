@@ -7,13 +7,16 @@ import './commonstyles/commonstyles.css';
 const Header = () =>
 {
     const { theme, setTheme } = useContext(BlogContext);
+    const { font, setFont } = useContext(BlogContext);
     const changetoDarkTheme =() =>
     {
-        setTheme("#888888");
+        setTheme("#000000");
+        setFont("#FFFFFF");
     }
     const changetoLightTheme =() =>
     {
         setTheme("#FFFFFF");
+        setFont("#000000")
     }
     return(
         <div className="header-tab">
