@@ -1,16 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import Card from "react-bootstrap/esm/Card";
+import { useNavigate } from "react-router";
 
 const BlogWrite =() =>
 {
-    const [author, setAuthor] = useState(4);
+    const [author, setAuthor] = useState(5);
     const [blogtitle, setBlogTitle] = useState("");
     const [image, setImage] = useState("");
     const [blogcontent, setBlogContent] = useState("");
     const [tag, setTag]=useState("");
     const [tags, setTags]=useState(["Blogs"]);
     const blogContentEl = useRef(null);
+    const navigate = useNavigate();
 
     const handleClick = async() => {
         try{
@@ -26,7 +28,8 @@ const BlogWrite =() =>
                   tags: tags,
                   date_posted: Date.now()
                 }),
-            })
+            });
+            navigate("/");
         }
         catch (err) {
             console.log(err);
@@ -42,7 +45,7 @@ const BlogWrite =() =>
         <Form.Control
           type="text"
           placeholder="Enter Blog Title"
-          onClick={(e) => {
+          onChange={(e) => {
             setBlogTitle(e.currentTarget.value);
           }}
         />
@@ -54,7 +57,7 @@ const BlogWrite =() =>
         <Form.Control
           type="text"
           placeholder="Enter header image address"
-          onClick={(e) => {
+          onChange={(e) => {
             setImage(e.currentTarget.value);
           }}
         />
@@ -66,7 +69,6 @@ const BlogWrite =() =>
       <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control
           as="textarea"
-          ref = {blogContentEl}
           rows={15}
           placeholder="Enter Blog Content here"
           onChange={(e) =>
@@ -79,6 +81,7 @@ const BlogWrite =() =>
     <FormControl
       placeholder="Add tags for blog"
       aria-label="Recipient's username with two button addons"
+      ref = {blogContentEl}
       onChange = {(e)=>
     {
         setTag(e.currentTarget.value);
@@ -88,7 +91,9 @@ const BlogWrite =() =>
     onClick = {()=>
     {
         setTags([...tags, tag]);
-    }}>Button</Button>
+        setTag("");
+        blogContentEl.current.value="";
+    }}>Add Tag</Button>
   </InputGroup>
       <Button onClick={handleClick}>Post the blog</Button>
       </Card>
