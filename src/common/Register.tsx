@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Card from "react-bootstrap/esm/Card";
+import { useNavigate } from "react-router";
 
 const Register = () =>{
     const [firstName, setFirstName] = React.useState("");
@@ -14,6 +15,26 @@ const Register = () =>{
     let [phoneValid, setPhoneValid] = React.useState("");
     let [emailValid, setEmailValid] = useState("");
     let [passwordValid, setpasswordValid] = useState("");
+    const navigate=useNavigate();
+
+    const handleSubmit =() =>{
+      const postUser = async ()=>{
+        const apiPost = await fetch("http://localhost:8000/postUsers",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            phoneNumber: phoneNumber,
+            password: password
+          })
+        });
+        navigate("/");
+      }
+      postUser();
+    }
     
     return(
         <div><Card className="container">
@@ -86,7 +107,7 @@ const Register = () =>{
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group> */}
         <Button variant="primary" type="submit"
-        >
+        onClick={handleSubmit}>
           Sign Up
         </Button>
       </Card></div>
