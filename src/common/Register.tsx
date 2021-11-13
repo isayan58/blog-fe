@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Card from "react-bootstrap/esm/Card";
 import { useNavigate } from "react-router";
+import '../Blogpost/Blogpost.css';
 
 const Register = () =>{
     const [firstName, setFirstName] = React.useState("");
@@ -9,6 +10,7 @@ const Register = () =>{
     const [email, setEmail] = React.useState("");
     const [phoneNumber, setPhoneNumber] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [profileimage, setProfileImage] = useState("");
     let [errFlag, setErrFlag] = useState(true);
     let [firstNameValid, setfirstNameValid] = React.useState("");
     let [lastNameValid, setLastNameValid] = React.useState("");
@@ -24,21 +26,35 @@ const Register = () =>{
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            header_image: profileimage,
             firstName: firstName,
             lastName: lastName,
             email: email,
             phoneNumber: phoneNumber,
-            password: password
+            password: password,
+            date_sign_up: Date.now()
           })
         });
-        navigate("/");
+        const responseData = await apiPost.json();
+        //if(responseData === "User created")
+        navigate("/login");
       }
       postUser();
     }
     
     return(
-        <div><Card className="container">
+        <div className="blogpost"><Card className="container">
         <Card.Title>Register</Card.Title>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Profile Image Address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter profile image address"
+            onChange={(e) => {
+              setFirstName(e.currentTarget.value);
+            }}
+          />
+          </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>First Name</Form.Label>
           <Form.Control

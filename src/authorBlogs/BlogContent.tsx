@@ -10,11 +10,14 @@ interface Blogs
     tags: String[]
 }
 interface Bloggers{
-    _id : string,
-    blogger_id: Number,
-    image: string,
-    name: String,
-    rating: Number,
+  blogger_id: number,
+  header_image: string,
+  firstName: string,
+  lastName: string,
+  email: string,
+  phoneNumber: number,
+  password: string,
+  date_sign_up: string
 }
 
 const BlogContent =() =>
@@ -32,16 +35,16 @@ const BlogContent =() =>
             const apiResponse = await fetch(`http://localhost:8000/blogger/${blogger_id}`);
             const responseData = await apiResponse.json();
             setBlogger(responseData);
-            console.log(responseData);
-            console.log(blogger);
+            // console.log("responseData:",responseData);
+            // console.log("Blogger:",blogger);
         }
         const fetchBlogDetails = async() =>
         {
             const apiResponse = await fetch(`http://localhost:8000/blogcontent/${title}`);
             const responseData = await apiResponse.json();
             setBlog(responseData);
-            console.log(responseData);
-
+            // console.log(responseData);
+    
         }
         fetchBlogger();
         fetchBlogDetails();
@@ -53,7 +56,7 @@ const BlogContent =() =>
             <div>{blog?.title}</div>
             <div><img src={blog?.header_image}/></div>
             <div>{blog?.content}</div>
-            <div>Written by: {blogger?.name}</div>
+            <div>Written by: {blogger?.firstName} {blogger?.lastName}.</div>
             <div>{blog?.tags.map((tags) => (
                 <div>{tags}; </div>
             ))}</div>

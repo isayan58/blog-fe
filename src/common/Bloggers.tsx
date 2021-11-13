@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 interface Bloggers{
-    _id : string,
-    blogger_id: Number,
-    image: string,
-    name: String,
-    rating: Number,
+  blogger_id: number,
+  header_image: string,
+  firstName: string,
+  lastName: string,
+  email: string,
+  phoneNumber: number,
+  password: string,
+  date_sign_up: string
 }
 const Bloggers = () =>{
     const [bloggers, setBloggers] = useState<Bloggers[]>([]);
@@ -34,12 +37,12 @@ const Bloggers = () =>{
         <br/>
         <div className="bloggers-list">
           {bloggers.map((data) => (
-            <div className="blogger-cards" key={data._id}>
+            <div className="blogger-cards" key={data.blogger_id}>
               <div
                 className="blogger-card"
                 onClick={() => history(`/blogs/${data.blogger_id}`)}>
-                <img src={data.image} alt="blogger" />
-                <div className="blogger-title">{data.name}, {data.rating}*</div>
+                <img src={data.header_image} alt="blogger" />
+                <div className="blogger-title">{data.firstName} {data.lastName}</div>
               </div>
             </div>
           ))}
