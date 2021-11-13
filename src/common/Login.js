@@ -36,6 +36,7 @@ const Login = () =>{
     }
     return(<div className="blogpost">
         <Card className="container">
+          <div className="space">
           <Card.Title>Login</Card.Title>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -65,6 +66,7 @@ const Login = () =>{
           onClick={handleLogin}>
             Login
           </Button>
+          </div>
         </Card>
         </div>
     );

@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import Card from "react-bootstrap/esm/Card";
 import { useNavigate } from "react-router";
+import { CookieContext } from "../CookieContext";
 import './Blogpost.css';
 
 const BlogWrite =() =>
@@ -14,20 +15,22 @@ const BlogWrite =() =>
     const [tags, setTags]=useState(["Blogs"]);
     const blogContentEl = useRef(null);
     const navigate = useNavigate();
+    const { cookie, setCookie } = useContext(CookieContext);
 
     const handleClick = async() => {
         try{
+          
             const apiResponse = await fetch("http://localhost:8000/postBlog",
             {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                  blogger_id: author,
                   title: blogtitle,
                   header_image: image,
                   content: blogcontent,
                   tags: tags,
-                  date_posted: Date.now()
+                  date_posted: Date.now(),
+                  authToken: cookie
                 }),
             });
             navigate("/");

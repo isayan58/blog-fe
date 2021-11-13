@@ -44,6 +44,7 @@ const Register = () =>{
     
     return(
         <div className="blogpost"><Card className="container">
+          <div className="space">
         <Card.Title>Register</Card.Title>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Profile Image Address</Form.Label>
@@ -126,6 +127,7 @@ const Register = () =>{
         onClick={handleSubmit}>
           Sign Up
         </Button>
+        </div>
       </Card></div>
     );
 };

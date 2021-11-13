@@ -35,7 +35,6 @@ const Header = () =>
 
     return(
         <div className="header-tab">
-            {/* <CookieContext.Provider value ={{ cookie, setCookie  }}> */}
             {
                 cookie?
                 <Link to = "/blogs" className = "header-items">
@@ -51,9 +50,14 @@ const Header = () =>
             <Link className = "header-items" to = "/contact">
                 Contact
             </Link>
+            {
+                cookie ?
             <Link className = "header-items" to = "/write-a-blog">
                 Write a Blog
             </Link>
+            :
+            <div></div>
+            }
             <div className = "header-buttons">
             {
                 cookie ?
