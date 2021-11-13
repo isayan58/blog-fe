@@ -1,10 +1,38 @@
+import { useNavigate } from "react-router";
 import React from "react";
 import { Button, Card, Form } from "react-bootstrap";
+import Cookies from 'js-cookie';
+import '../Blogpost/Blogpost.css';
+
 
 const Login = () =>{
     const [email, setEmail] = React.useState("");
-      const [password, setPassword] = React.useState("");
-    return(
+    const [password, setPassword] = React.useState("");
+    const navigate = useNavigate();
+
+    const handleLogin =()=>
+    {
+      const onLogin = async() =>
+      {
+        const apiResponse = await fetch("http://localhost:8000/authenticateUser",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(
+            {
+              email: email,
+              password: password
+            }
+          )
+        });
+        const responseData = await apiResponse.json();
+        console.log(responseData);
+        Cookies.set("authToken", responseData.token);
+        navigate("/");
+      }
+      onLogin();
+    }
+    return(<div className="blogpost">
         <Card className="container">
           <Card.Title>Login</Card.Title>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -31,10 +59,12 @@ const Login = () =>{
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Remember Me" />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit"
+          onClick={handleLogin}>
             Login
           </Button>
         </Card>
+        </div>
     );
 };
 export default Login;

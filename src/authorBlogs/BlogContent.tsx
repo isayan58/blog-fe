@@ -44,7 +44,6 @@ const BlogContent =() =>
             const responseData = await apiResponse.json();
             setBlog(responseData);
             // console.log(responseData);
-    
         }
         fetchBlogger();
         fetchBlogDetails();
