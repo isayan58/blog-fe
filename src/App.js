@@ -2,10 +2,11 @@ import React, { createContext, useMemo, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './common/Header';
 import './App.css';
-import Home from './common/Home';
+import HomePage from './common/HomePage';
 import Bloggers from './common/Bloggers';
 import Contact from './common/Contact';
 import Login from './common/Login';
+import Home from './common/Home';
 import Register from './common/Register';
 import Blogs from './authorBlogs/Blogs';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -26,7 +27,7 @@ function App() {
       <CookieContext.Provider value ={{cookie, setCookie}}>
       <Header/>
       <Routes>
-      <Route element={<Home/>} path="/"/>
+      <Route element={<HomePage/>} path="/"/>
       <Route element={<Bloggers/>} path="/bloggers"/>
       <Route element={<Contact/>} path="/contact"/>
       <Route element={<Login/>} path="/login"/>
@@ -34,6 +35,7 @@ function App() {
       <Route element={<Blogs/>} path="/blogs/:blogger_id"/>
       <Route element={<BlogContent/>} path="/blogs/:blogger_id/:title"/>
       <Route element={<BlogWrite/>} path="/write-a-blog" />
+      <Route element={<Home/>} path="/blogs"/>
       </Routes>
       </CookieContext.Provider>
       </BlogContext.Provider>

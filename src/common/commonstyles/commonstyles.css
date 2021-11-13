@@ -102,3 +102,12 @@
     font-family: cursive;
     font-weight: 700;
 }
+
+.homepage
+{
+    display: flex;
+}
+
+.home{
+    flex-basis: 90%;
+}

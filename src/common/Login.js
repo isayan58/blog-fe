@@ -30,7 +30,7 @@ const Login = () =>{
         console.log(responseData);
         Cookies.set("authToken", responseData.token);
         setCookie(responseData.token);
-        navigate("/");
+        navigate("/blogs");
       }
       onLogin();
     }
