@@ -1,15 +1,16 @@
 import { useNavigate } from "react-router";
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import Cookies from 'js-cookie';
 import '../Blogpost/Blogpost.css';
+import { CookieContext } from "../CookieContext";
 
 
 const Login = () =>{
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const navigate = useNavigate();
-
+    const { cookie, setCookie } = useContext(CookieContext);
     const handleLogin =()=>
     {
       const onLogin = async() =>
@@ -28,6 +29,7 @@ const Login = () =>{
         const responseData = await apiResponse.json();
         console.log(responseData);
         Cookies.set("authToken", responseData.token);
+        setCookie(responseData.token);
         navigate("/");
       }
       onLogin();

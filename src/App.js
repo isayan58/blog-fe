@@ -12,15 +12,18 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import BlogContent from './authorBlogs/BlogContent';
 import BlogWrite from './Blogpost/BlogWrite';
 import { BlogContext } from './BlogContext';
+import {  CookieContext } from './CookieContext';
 
 function App() {
   const [ theme, setTheme ] = useState("#000000");
   const [ font, setFont ] = useState("#FFFFFF");
   // const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme]);
+  const [cookie, setCookie] = useState("");
   return(
   <>
     <div style={{ background: theme, color: font }}>
       <BlogContext.Provider value= {{ theme, setTheme, font, setFont }}>
+      <CookieContext.Provider value ={{cookie, setCookie}}>
       <Header/>
       <Routes>
       <Route element={<Home/>} path="/"/>
@@ -32,6 +35,7 @@ function App() {
       <Route element={<BlogContent/>} path="/blogs/:blogger_id/:title"/>
       <Route element={<BlogWrite/>} path="/write-a-blog" />
       </Routes>
+      </CookieContext.Provider>
       </BlogContext.Provider>
     </div>
   </>);

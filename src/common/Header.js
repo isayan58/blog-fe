@@ -3,13 +3,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BlogContext } from "../BlogContext";
+import { CookieContext } from "../CookieContext";
 import './commonstyles/commonstyles.css';
 
 const Header = () =>
 {
     const { theme, setTheme } = useContext(BlogContext);
     const { font, setFont } = useContext(BlogContext);
-    const [cookie, setCookie] = useState("");
+    const { cookie, setCookie } = useContext(CookieContext);
     const changetoDarkTheme =() =>
     {
         setTheme("#000000");
@@ -23,6 +24,7 @@ const Header = () =>
     const handleLogout = () =>
     {
         Cookies.remove("authToken");
+        setCookie("");
     }
 
     useEffect(()=>
@@ -33,6 +35,7 @@ const Header = () =>
 
     return(
         <div className="header-tab">
+            {/* <CookieContext.Provider value ={{ cookie, setCookie  }}> */}
             <Link to = "/" className = "header-items">
                 Home
             </Link>
@@ -50,29 +53,38 @@ const Header = () =>
                 cookie ?
                 <div></div>
                 :
+                <div>
             <Link to = "/login">
             <Button>
                 Log In
             </Button>
             </Link>
+            <Link to = "/sign-up">
+            <Button className = "header-items">
+                Sign Up
+            </Button>
+            </Link>
+            </div>
             }
             </div>
             <div className = "header-buttons">
             {
                 cookie ?
-            <Link to = "/sign-up">
+                <div>
+            <Link to = "/">
             <Button className = "header-items"
             onClick={handleLogout}>
-                Sign Up
+                Sign Out
             </Button>
             </Link>
+            </div>
             :
             <div></div>
 }
             </div>
             <Button onClick={changetoDarkTheme}>Dark Theme</Button>
             <Button onClick={changetoLightTheme}>Light Theme</Button>
-            
+            {/* </CookieContext.Provider> */}
         </div>
     );
 }
