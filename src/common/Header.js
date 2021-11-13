@@ -82,9 +82,11 @@ const Header = () =>
             <div></div>
 }
             </div>
+            <div className = "header-buttons">
             <Button onClick={changetoDarkTheme}>Dark Theme</Button>
             <Button onClick={changetoLightTheme}>Light Theme</Button>
             {/* </CookieContext.Provider> */}
+            </div>
         </div>
     );
 }
