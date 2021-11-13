@@ -33,7 +33,7 @@ const BlogWrite =() =>
                   authToken: cookie
                 }),
             });
-            navigate("/");
+            navigate("/blogs");
         }
         catch (err) {
             console.log(err);
