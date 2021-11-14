@@ -14,6 +14,7 @@ import BlogContent from './authorBlogs/BlogContent';
 import BlogWrite from './Blogpost/BlogWrite';
 import { BlogContext } from './BlogContext';
 import {  CookieContext } from './CookieContext';
+import { SearchContext } from './SearchContext';
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import BlogSearch from './Blogpost/BlogSearch';
@@ -34,6 +35,7 @@ function App() {
     <div style={{ background: theme, color: font }}>
     <BlogContext.Provider value= {{ theme, setTheme, font, setFont }}>
     <CookieContext.Provider value ={{cookie, setCookie}}>
+    <SearchContext.Provider value ={{search, setSearch}}>
     <Header/>
     <div className="searchbar">
     <InputGroup className="mb-3">
@@ -61,6 +63,7 @@ function App() {
       <Route element={<Home/>} path="/blogs"/>
       <Route element={<BlogSearch/>} path="/search/:search"/>
       </Routes>
+      </SearchContext.Provider>
       </CookieContext.Provider>
       </BlogContext.Provider>
     </div>

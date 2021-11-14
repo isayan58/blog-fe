@@ -25,7 +25,7 @@ const BlogSearch = () =>
         }
     }
     useEffect(() =>
-        searchBlog(), []);
+        searchBlog(), [blogSearch]);
     return(
         <div>{search}</div>
     )
