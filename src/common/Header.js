@@ -30,7 +30,7 @@ const Header = () =>
     useEffect(()=>
     {
         setCookie(Cookies.get("authToken"));
-        console.log(cookie);
+        //console.log(cookie);
     });
 
     return(

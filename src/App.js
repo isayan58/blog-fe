@@ -14,18 +14,41 @@ import BlogContent from './authorBlogs/BlogContent';
 import BlogWrite from './Blogpost/BlogWrite';
 import { BlogContext } from './BlogContext';
 import {  CookieContext } from './CookieContext';
+import { InputGroup, FormControl, Button } from "react-bootstrap";
+import { useNavigate } from "react-router";
+import BlogSearch from './Blogpost/BlogSearch';
 
 function App() {
   const [ theme, setTheme ] = useState("#000000");
   const [ font, setFont ] = useState("#FFFFFF");
   // const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme]);
   const [cookie, setCookie] = useState("");
+  const [search , setSearch] = useState("");
+  const navigate = useNavigate();
+    const onSearch = () =>
+    {
+      navigate(`search/${search}`);
+    }
   return(
   <>
     <div style={{ background: theme, color: font }}>
-      <BlogContext.Provider value= {{ theme, setTheme, font, setFont }}>
-      <CookieContext.Provider value ={{cookie, setCookie}}>
-      <Header/>
+    <BlogContext.Provider value= {{ theme, setTheme, font, setFont }}>
+    <CookieContext.Provider value ={{cookie, setCookie}}>
+    <Header/>
+    <div className="searchbar">
+    <InputGroup className="mb-3">
+    <FormControl
+      placeholder="Enter blog name"
+      aria-label="Enter blog name"
+      aria-describedby="basic-addon2"
+      onChange={(e) => setSearch(e.currentTarget.value)}
+    />
+    <Button variant="outline-secondary" id="button-addon2"
+    onClick = {onSearch}>
+      Search Blogs
+    </Button>
+  </InputGroup>
+  </div>
       <Routes>
       <Route element={<HomePage/>} path="/"/>
       <Route element={<Bloggers/>} path="/bloggers"/>
@@ -36,6 +59,7 @@ function App() {
       <Route element={<BlogContent/>} path="/blogs/:blogger_id/:title"/>
       <Route element={<BlogWrite/>} path="/write-a-blog" />
       <Route element={<Home/>} path="/blogs"/>
+      <Route element={<BlogSearch/>} path="/search/:search"/>
       </Routes>
       </CookieContext.Provider>
       </BlogContext.Provider>
