@@ -34,7 +34,7 @@ const Login = () =>{
       }
       onLogin();
     }
-    return(<div className="blogpost">
+    return(<div className="blogpost-login">
         <Card className="container">
           <div className="space">
           <Card.Title>Login</Card.Title>

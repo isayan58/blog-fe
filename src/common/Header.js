@@ -93,8 +93,8 @@ const Header = () =>
 }
             </div>
             <div className = "header-buttons">
-            <Button onClick={changetoDarkTheme}>Dark Theme</Button>
-            <Button onClick={changetoLightTheme}>Light Theme</Button>
+            <Button onClick={changetoDarkTheme} variant="dark">Dark Theme</Button>
+            <Button onClick={changetoLightTheme} variant="light">Light Theme</Button>
             {/* </CookieContext.Provider> */}
             </div>
         </div>
