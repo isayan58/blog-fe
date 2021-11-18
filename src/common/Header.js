@@ -50,9 +50,6 @@ const Header = () =>
             <Link className = "header-items" to = "/contact">
                 Contact
             </Link>
-            <Link className = "header-items" to = "/dataSources">
-                Image Upload Demo
-            </Link>
             {
                 cookie ?
             <Link className = "header-items" to = "/write-a-blog">
