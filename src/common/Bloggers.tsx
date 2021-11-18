@@ -21,14 +21,10 @@ const Bloggers = () =>{
             const responseD = await apiResponse.json();
             const responseData = responseD;
             setBloggers(responseData);
-            //console.log("apiResponse:",apiResponse);
             console.log(responseData);
-            //console.log("bloggers:", bloggers);
         };
         fetchBloggers();    
     };
-
-
     useEffect(getBloggers, []);
     return(
         <div>

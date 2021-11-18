@@ -14,7 +14,6 @@ interface Blogs
 const BlogSearch = () =>
 {
     const { search } = useParams();
-    //console.log(params.search);
     const navigate = useNavigate();
     const [blogSearch, setBlogSearch] = useState<Blogs[]>([]);
     const searchBlog = () =>
