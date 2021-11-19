@@ -1,5 +1,5 @@
 const config = {
-    base_url:"https://blog-fe-demo.herokuapp.com/"
+    base_url:"http://blog-fe-demo.herokuapp.com/"
 }
 
 export default config;
