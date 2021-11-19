@@ -4,6 +4,7 @@ import { Button, Card, Form } from "react-bootstrap";
 import Cookies from 'js-cookie';
 import '../Blogpost/Blogpost.css';
 import { CookieContext } from "../CookieContext";
+import OAuth2Login from 'react-simple-oauth2-login';
 
 
 const Login = () =>{
@@ -34,6 +35,9 @@ const Login = () =>{
       }
       onLogin();
     }
+
+    const onSuccess = response => console.log(response);
+    const onFailure = response => console.error(response);
     return(<div className="blogpost-login">
         <Card className="container">
           <div className="space">
@@ -66,6 +70,13 @@ const Login = () =>{
           onClick={handleLogin}>
             Login
           </Button>
+          {/* <OAuth2Login
+            authorizationUrl="https://accounts.gmail.com/authorize"
+            responseType="token"
+            clientId="9822046hvr4lnhi7g07grihpefahy5jb"
+            redirectUri="http://localhost:3000/oauth-callback"
+            onSuccess={onSuccess}
+            onFailure={onFailure}/> */}
           </div>
         </Card>
         </div>
