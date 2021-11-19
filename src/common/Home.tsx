@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import React, { useEffect, useState } from "react";
 import './commonstyles/commonstyles.css';
+import config from '../config/prod_config';
 
 interface Blogs
 {
@@ -17,7 +18,7 @@ const Home = () =>{
     const navigate = useNavigate();
     const getBlogs = () =>{
         const fetchBlogs = async() =>{
-            const apiResponse = await fetch("http://localhost:8000/AllBlogs");
+            const apiResponse = await fetch(`${config.base_url}/AllBlogs`);
             const responseData = await apiResponse.json();
             setBlogs(responseData);
         }

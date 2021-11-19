@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import '../Blogpost/Blogpost.css';
 import { CookieContext } from "../CookieContext";
 import OAuth2Login from 'react-simple-oauth2-login';
+import config from '../config/prod_config';
 
 
 const Login = () =>{
@@ -17,7 +18,7 @@ const Login = () =>{
     {
       const onLogin = async() =>
       {
-        const apiResponse = await fetch("http://localhost:8000/authenticateUser",
+        const apiResponse = await fetch(`${config.base_url}/authenticateUser`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
