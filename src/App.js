@@ -18,6 +18,7 @@ import { SearchContext } from './SearchContext';
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import BlogSearch from './Blogpost/BlogSearch';
+import Update from './common/Update';
 
 function App() {
   const [ theme, setTheme ] = useState("#000000");
@@ -62,6 +63,7 @@ function App() {
       <Route element={<BlogWrite/>} path="/write-a-blog" />
       <Route element={<Home/>} path="/blogs"/>
       <Route element={<BlogSearch/>} path="/search/:search"/>
+      <Route element={<Update/>} path="/update_password" exact/>
       </Routes>
       </SearchContext.Provider>
       </CookieContext.Provider>

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import React, { useContext } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import Cookies from 'js-cookie';
+import { Link } from "react-router-dom";
 import '../Blogpost/Blogpost.css';
 import { CookieContext } from "../CookieContext";
 import OAuth2Login from 'react-simple-oauth2-login';
@@ -64,19 +65,22 @@ const Login = () =>{
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Remember Me" />
+            {/* <Form.Check type="checkbox" label="Remember Me" /> */}
+            <Link to="/update_password">
+              Forgot Password.
+            </Link>
           </Form.Group>
           <Button variant="primary" type="submit"
           onClick={handleLogin}>
             Login
           </Button>
-          {/* <OAuth2Login
+          {/*<OAuth2Login
             authorizationUrl="https://accounts.gmail.com/authorize"
             responseType="token"
             clientId="9822046hvr4lnhi7g07grihpefahy5jb"
             redirectUri="http://localhost:3000/oauth-callback"
             onSuccess={onSuccess}
-            onFailure={onFailure}/> */}
+            onFailure={onFailure}/>*/}
           </div>
         </Card>
         </div>
