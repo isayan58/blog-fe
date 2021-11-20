@@ -40,7 +40,7 @@ const BlogContent =() =>
         }
         const fetchBlogDetails = async() =>
         {
-            const apiResponse = await fetch(`http://localhost:8000/blogcontent/${title}`);
+            const apiResponse = await fetch(`${config.base_url}/blogcontent/${title}`);
             const responseData = await apiResponse.json();
             setBlog(responseData);
         }
