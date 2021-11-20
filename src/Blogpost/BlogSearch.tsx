@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
+import config from '../config/prod_config';
 
 interface Blogs
 {
@@ -20,7 +21,7 @@ const BlogSearch = () =>
     {
         const fetchBlog = async () =>
         {
-            const apiResponse = await fetch(`http://localhost:8000/search/${search}`);
+            const apiResponse = await fetch(`${config.base_url}/search/${search}`);
             const responseData = await apiResponse.json();
             setBlogSearch(responseData);
         }

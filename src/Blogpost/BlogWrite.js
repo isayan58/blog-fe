@@ -4,6 +4,7 @@ import Card from "react-bootstrap/esm/Card";
 import { useNavigate } from "react-router";
 import { CookieContext } from "../CookieContext";
 import './Blogpost.css';
+import config from '../config/prod_config';
 
 const BlogWrite =() =>
 {
@@ -20,7 +21,7 @@ const BlogWrite =() =>
     const handleClick = async() => {
         try{
           
-            const apiResponse = await fetch("http://localhost:8000/postBlog",
+            const apiResponse = await fetch(`${config.base_url}/postBlog`,
             {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

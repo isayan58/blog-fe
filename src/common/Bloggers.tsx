@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import config from '../config/prod_config';
 interface Bloggers{
   blogger_id: number,
   header_image: string,
@@ -17,7 +18,7 @@ const Bloggers = () =>{
     const getBloggers =() =>
     {
         const fetchBloggers = async() => {
-            const apiResponse = await fetch("http://localhost:8000/bloggers");
+            const apiResponse = await fetch(`${config.base_url}/bloggers`);
             const responseD = await apiResponse.json();
             const responseData = responseD;
             setBloggers(responseData);

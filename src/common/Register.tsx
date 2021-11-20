@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import Card from "react-bootstrap/esm/Card";
 import { useNavigate } from "react-router";
 import '../Blogpost/Blogpost.css';
+import config from '../config/prod_config';
 
 const Register = () =>{
     const [firstName, setFirstName] = React.useState("");
@@ -21,7 +22,7 @@ const Register = () =>{
 
     const handleSubmit =() =>{
       const postUser = async ()=>{
-        const apiPost = await fetch("http://localhost:8000/postUsers",
+        const apiPost = await fetch(`${config.base_url}/postUsers`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
+import config from '../config/prod_config';
 
 const Update = () =>
 {
@@ -11,7 +12,7 @@ const Update = () =>
     {
       const updatePwd = async()=>
       {
-        const apiResponse = await fetch("http://localhost:8000/updatePassword",
+        const apiResponse = await fetch(`${config.base_url}/updatePassword`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
