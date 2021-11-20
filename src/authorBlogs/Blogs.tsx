@@ -1,5 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import React, { useEffect, useState } from "react";
+import config from '../config/prod_config';
+
 interface Blogs
 {
     _id: string,
@@ -19,7 +21,7 @@ const Blogs = () =>
     const getBlogs =()=>{
         const fetchblogs = async () =>
         {
-            const apiResponse = await fetch(`http://localhost:8000/blogs/${blogger_id}`);
+            const apiResponse = await fetch(`${config.base_url}/blogs/${blogger_id}`);
             const responseData = await apiResponse.json();
             setBlogs(responseData);
         }
