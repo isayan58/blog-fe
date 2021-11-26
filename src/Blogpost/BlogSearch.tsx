@@ -23,12 +23,13 @@ const BlogSearch = () =>
         {
             const apiResponse = await fetch(`${config.base_url}/search/${search}`);
             const responseData = await apiResponse.json();
+            console.log(responseData);
             setBlogSearch(responseData);
         }
         fetchBlog();
     }
     useEffect(() =>
-        searchBlog(), [blogSearch]);
+        searchBlog(), []);
     return(
     <div className="home-blogs">
     {

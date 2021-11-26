@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import Card from "react-bootstrap/esm/Card";
+import { Button, Form, Card } from "react-bootstrap";
+// import Card from "react-bootstrap/esm/Card";
 import { useNavigate } from "react-router";
 import '../Blogpost/Blogpost.css';
 import config from '../config/prod_config';

@@ -25,7 +25,7 @@ const Update = () =>
         });
         const responseData = await apiResponse.json();
         //Something to do if required
-        navigate("/");
+        navigate("/"); //Page not getting redirected. Need to check.
       }
       updatePwd();
     }
