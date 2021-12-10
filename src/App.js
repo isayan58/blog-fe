@@ -29,7 +29,8 @@ function App() {
   const navigate = useNavigate();
     const onSearch = () =>
     {
-      navigate(`search/${search}`);
+      //navigate(`search/${search}`);
+      alert("Advanced search functionality in development. Disabled functionality till then");
     }
   return(
   <>
